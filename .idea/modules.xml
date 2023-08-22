@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NoLifeSMPPlugin.iml" filepath="$PROJECT_DIR$/NoLifeSMPPlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HeadlessPlugin.iml" filepath="$PROJECT_DIR$/HeadlessPlugin.iml" />
     </modules>
   </component>
 </project>

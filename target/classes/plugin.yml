@@ -1,6 +1,6 @@
-name: NoLifeSMPPlugin
+name: NoLifePlugin
 version: '1.0'
-main: uk.sleepylux.nolifesmpplugin.NoLifeSMPPlugin
+main: uk.sleepylux.nolifeplugin.NoLifePlugin
 api-version: '1.20'
 commands:
   revive:

@@ -1,3 +1,9 @@
-D:\Projects\NoLifeSMPPlugin\src\main\java\uk\sleepylux\nolifesmpplugin\NoLifeSMPPlugin.java
-D:\Projects\NoLifeSMPPlugin\src\main\java\uk\sleepylux\nolifesmpplugin\commands\revive.java
-D:\Projects\NoLifeSMPPlugin\src\main\java\uk\sleepylux\nolifesmpplugin\events\onJoin.java
+D:\Projects\NoLifePlugin\src\main\java\uk\sleepylux\nolifeplugin\events\onJoin.java
+D:\Projects\NoLifePlugin\src\main\java\uk\sleepylux\nolifeplugin\commands\revive.java
+D:\Projects\NoLifePlugin\src\main\java\uk\sleepylux\nolifeplugin\utility\HeadManager.java
+D:\Projects\NoLifePlugin\src\main\java\uk\sleepylux\nolifeplugin\events\onDeath.java
+D:\Projects\NoLifePlugin\src\main\java\uk\sleepylux\nolifeplugin\utility\MessageManager.java
+D:\Projects\NoLifePlugin\src\main\java\uk\sleepylux\nolifeplugin\events\onInventoryClick.java
+D:\Projects\NoLifePlugin\src\main\java\uk\sleepylux\nolifeplugin\utility\PlayersManager.java
+D:\Projects\NoLifePlugin\src\main\java\uk\sleepylux\nolifeplugin\events\onHeadDestory.java
+D:\Projects\NoLifePlugin\src\main\java\uk\sleepylux\nolifeplugin\NoLifePlugin.java

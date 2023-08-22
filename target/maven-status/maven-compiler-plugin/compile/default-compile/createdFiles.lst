@@ -1,3 +1,10 @@
-uk\sleepylux\nolifesmpplugin\events\onJoin.class
-uk\sleepylux\nolifesmpplugin\NoLifeSMPPlugin.class
-uk\sleepylux\nolifesmpplugin\commands\revive.class
+uk\sleepylux\nolifeplugin\events\onInventoryClick.class
+uk\sleepylux\nolifeplugin\commands\revive.class
+uk\sleepylux\nolifeplugin\events\onDeath.class
+uk\sleepylux\nolifeplugin\events\onHeadDestory.class
+uk\sleepylux\nolifeplugin\events\onJoin.class
+uk\sleepylux\nolifeplugin\utility\HeadManager.class
+uk\sleepylux\nolifeplugin\utility\PlayersManager.class
+uk\sleepylux\nolifeplugin\events\onHeadPlace.class
+uk\sleepylux\nolifeplugin\NoLifePlugin.class
+uk\sleepylux\nolifeplugin\utility\MessageManager.class
