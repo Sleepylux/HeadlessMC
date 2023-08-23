@@ -1,6 +1,6 @@
 name: Headless
 version: '${project.version}'
-main: uk.sleepylux.headless.HeadlessPlugin
+main: uk.sleepylux.headlessplugin.HeadlessPlugin
 api-version: '1.20'
 commands:
   revive:

@@ -2,6 +2,7 @@ package uk.sleepylux.headlessplugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.simple.JSONObject;
+import uk.sleepylux.headlessplugin.commands.credits;
 import uk.sleepylux.headlessplugin.commands.revive;
 import uk.sleepylux.headlessplugin.events.*;
 
@@ -32,6 +33,7 @@ public final class HeadlessPlugin extends JavaPlugin {
         }
 
         Objects.requireNonNull(this.getCommand("revive")).setExecutor(new revive(this));
+        Objects.requireNonNull(this.getCommand("credits")).setExecutor(new credits(this));
 
         getServer().getPluginManager().registerEvents(new onJoin(this), this);
         getServer().getPluginManager().registerEvents(new onDeath(this), this);
