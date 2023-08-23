@@ -12,6 +12,9 @@ import uk.sleepylux.headlessplugin.HeadlessPlugin;
 import uk.sleepylux.headlessplugin.utility.HeadManager;
 import uk.sleepylux.headlessplugin.utility.MessageManager;
 import uk.sleepylux.headlessplugin.utility.PlayersManager;
+
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import static uk.sleepylux.headlessplugin.commands.revive.inv;
 
 public class onInventoryClick implements Listener {
@@ -39,15 +42,19 @@ public class onInventoryClick implements Listener {
 
         JSONObject playerJSON = PlayersManager.getPlayerJSON(plugin, revivee.getUniqueId());
         ItemStack skull = HeadManager.Create(plugin, revivee, Integer.parseInt(playerJSON.get("id").toString()));
+        skull.setAmount(4);
 
-        if (!player.getInventory().containsAtLeast(skull, 4)) {
+        AtomicBoolean hasHeads = new AtomicBoolean(false);
+        player.getInventory().forEach(item -> {
+            if (item != null && item.isSimilar(clickedItem) && item.getAmount() >= 4) {
+                hasHeads.set(true);
+                player.getInventory().removeItem(item);
+            }
+        });
+        if (!hasHeads.get()) {
             MessageManager.sendMessage(player, "You must have 4 of " + revivee.getName() + "'s heads to revive them");
             return;
         }
-
-        skull.setAmount(4);
-
-        player.getInventory().removeItem(skull);
 
         reviveeJson.put("dead", false);
         reviveeJson.put("lives", 4);

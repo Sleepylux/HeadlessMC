@@ -22,7 +22,8 @@ public class onDeath implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
-        if (e.getPlayer().getKiller() == null) return;
+        if (e.getPlayer().getKiller() == null
+             || e.getPlayer().equals(e.getPlayer().getKiller())) return;
 
         Player player = e.getPlayer();
         OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(player.getUniqueId());

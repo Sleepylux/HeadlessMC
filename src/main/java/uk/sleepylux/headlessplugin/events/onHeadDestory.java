@@ -25,20 +25,18 @@ public class onHeadDestory implements Listener {
             if (item.getType() == Material.PLAYER_HEAD
                     && item.hasItemMeta()
                     && item.getItemMeta().hasCustomModelData()) {
-                System.out.println("1 cancel");
                 e.setCancelled(true);
             }
         }
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler
     public void onFireDamage(EntityCombustEvent e) {
         if (e.getEntity().getType() == EntityType.DROPPED_ITEM) {
             ItemStack item = ((Item) e.getEntity()).getItemStack();
             if (item.getType() == Material.PLAYER_HEAD
                     && item.hasItemMeta()
                     && item.getItemMeta().hasCustomModelData()) {
-                System.out.println("2 cancel");
                 e.setCancelled(true);
             }
         }

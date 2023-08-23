@@ -1,6 +1,6 @@
 package uk.sleepylux.headlessplugin.commands;
 
-import net.kyori.adventure.text.Component;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,9 +18,8 @@ public class credits implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (!(commandSender instanceof Player p)) return true;
 
-        MessageManager.sendMessage(p, "Created by Lux\n" +
-                MessageManager.introMessage + "Github: https://github.com/Sleepylux" +
-                MessageManager.introMessage + "Issues: https://github.com/Sleepylux/HeadlessMC/issues");
+        MessageManager.sendMessage(p, "Github: https://github.com/Sleepylux\n" +
+                MessageManager.introMessage + ChatColor.RESET + "Issues: https://github.com/Sleepylux/HeadlessMC/issues");
         return true;
     }
 }
