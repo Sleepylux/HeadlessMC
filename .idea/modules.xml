@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HeadlessPlugin.iml" filepath="$PROJECT_DIR$/HeadlessPlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HeartlessPlugin.iml" filepath="$PROJECT_DIR$/HeartlessPlugin.iml" />
     </modules>
   </component>
 </project>

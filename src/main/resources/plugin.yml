@@ -1,6 +1,6 @@
-name: Headless
+name: Heartless
 version: '${project.version}'
-main: uk.sleepylux.headlessplugin.HeadlessPlugin
+main: uk.sleepylux.heartlessplugin.HeartlessPlugin
 api-version: '1.20'
 commands:
   credits:
@@ -9,6 +9,6 @@ commands:
   revive:
     description: Revive a user
     usage: /revive
-  getHead:
-    description: Get a players head
-    usage: /getHead <Playername>
+  getHeart:
+    description: Get a players heart
+    usage: /getHeart <Playername>

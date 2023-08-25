@@ -1,4 +1,4 @@
-package uk.sleepylux.headlessplugin.events;
+package uk.sleepylux.heartlessplugin.events;
 
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -9,14 +9,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.json.simple.JSONObject;
-import uk.sleepylux.headlessplugin.HeadlessPlugin;
-import uk.sleepylux.headlessplugin.utility.HeadManager;
-import uk.sleepylux.headlessplugin.utility.MessageManager;
-import uk.sleepylux.headlessplugin.utility.PlayersManager;
+import uk.sleepylux.heartlessplugin.HeartlessPlugin;
+import uk.sleepylux.heartlessplugin.utility.HeartManager;
+import uk.sleepylux.heartlessplugin.utility.MessageManager;
+import uk.sleepylux.heartlessplugin.utility.PlayersManager;
 
 public class onDeath implements Listener {
-    HeadlessPlugin plugin;
-    public onDeath(HeadlessPlugin plugin) {
+    HeartlessPlugin plugin;
+    public onDeath(HeartlessPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -30,7 +30,7 @@ public class onDeath implements Listener {
 
         JSONObject playerJSON = PlayersManager.getPlayerJSON(plugin, player.getUniqueId());
 
-        ItemStack skull = HeadManager.Create(plugin, offlinePlayer, Integer.parseInt(playerJSON.get("id").toString()));
+        ItemStack skull = HeartManager.Create(plugin, offlinePlayer, Integer.parseInt(playerJSON.get("id").toString()));
 
         Integer lives = Integer.parseInt((playerJSON.get("lives").toString()))-1;
         playerJSON.put("lives", lives);

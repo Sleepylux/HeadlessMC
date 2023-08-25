@@ -1,18 +1,18 @@
-package uk.sleepylux.headlessplugin.events;
+package uk.sleepylux.heartlessplugin.events;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import uk.sleepylux.headlessplugin.HeadlessPlugin;
-import uk.sleepylux.headlessplugin.utility.PlayersManager;
+import uk.sleepylux.heartlessplugin.HeartlessPlugin;
+import uk.sleepylux.heartlessplugin.utility.PlayersManager;
 
 import java.util.*;
 
 public class onJoin implements Listener {
-    HeadlessPlugin plugin;
-    public onJoin(HeadlessPlugin plugin) {
+    HeartlessPlugin plugin;
+    public onJoin(HeartlessPlugin plugin) {
         this.plugin = plugin;
     }
     @EventHandler

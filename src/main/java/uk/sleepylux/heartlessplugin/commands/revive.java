@@ -1,4 +1,4 @@
-package uk.sleepylux.headlessplugin.commands;
+package uk.sleepylux.heartlessplugin.commands;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
@@ -11,15 +11,15 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONObject;
-import uk.sleepylux.headlessplugin.HeadlessPlugin;
-import uk.sleepylux.headlessplugin.utility.HeadManager;
-import uk.sleepylux.headlessplugin.utility.PlayersManager;
+import uk.sleepylux.heartlessplugin.HeartlessPlugin;
+import uk.sleepylux.heartlessplugin.utility.HeartManager;
+import uk.sleepylux.heartlessplugin.utility.PlayersManager;
 
 import java.util.UUID;
 
 public class revive implements CommandExecutor {
-    HeadlessPlugin plugin;
-    public revive(HeadlessPlugin plugin) {
+    HeartlessPlugin plugin;
+    public revive(HeartlessPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -45,7 +45,7 @@ public class revive implements CommandExecutor {
                 OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(UUID.fromString(k.toString()));
 
                 JSONObject playerJSON = PlayersManager.getPlayerJSON(plugin, offlinePlayer.getUniqueId());
-                ItemStack skull = HeadManager.Create(plugin, offlinePlayer, Integer.parseInt(playerJSON.get("id").toString()));
+                ItemStack skull = HeartManager.Create(plugin, offlinePlayer, Integer.parseInt(playerJSON.get("id").toString()));
                 inv.addItem(skull);
             }
         });

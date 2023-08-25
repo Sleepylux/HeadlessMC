@@ -1,16 +1,16 @@
-package uk.sleepylux.headlessplugin.utility;
+package uk.sleepylux.heartlessplugin.utility;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
-import uk.sleepylux.headlessplugin.HeadlessPlugin;
+import uk.sleepylux.heartlessplugin.HeartlessPlugin;
 
 import java.util.ArrayList;
 
-public class HeadManager {
-    public static ItemStack Create(HeadlessPlugin plugin, OfflinePlayer player, Integer id) {
+public class HeartManager {
+    public static ItemStack Create(HeartlessPlugin plugin, OfflinePlayer player, Integer id) {
 
         ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1);
         SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();

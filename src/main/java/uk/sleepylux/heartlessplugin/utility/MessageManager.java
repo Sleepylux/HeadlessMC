@@ -1,4 +1,4 @@
-package uk.sleepylux.headlessplugin.utility;
+package uk.sleepylux.heartlessplugin.utility;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.ChatColor;
@@ -6,7 +6,7 @@ import org.bukkit.Server;
 import org.bukkit.entity.Player;
 
 public class MessageManager {
-    public static String introMessage = ChatColor.GOLD + "[Headless] ";
+    public static String introMessage = ChatColor.GOLD + "[Heartless] ";
     public static void sendMessage(Player player, String text) {
         player.sendMessage(Component.text( introMessage + ChatColor.RESET + text));
     }
