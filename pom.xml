@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>uk.sleepylux</groupId>
-    <artifactId>HeadlessPlugin</artifactId>
+    <artifactId>HeartlessPlugin</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 

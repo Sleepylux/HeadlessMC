@@ -1,4 +1,4 @@
-package uk.sleepylux.headlessplugin.commands;
+package uk.sleepylux.heartlessplugin.commands;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -8,14 +8,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONObject;
-import uk.sleepylux.headlessplugin.HeadlessPlugin;
-import uk.sleepylux.headlessplugin.utility.HeadManager;
-import uk.sleepylux.headlessplugin.utility.MessageManager;
-import uk.sleepylux.headlessplugin.utility.PlayersManager;
+import uk.sleepylux.heartlessplugin.HeartlessPlugin;
+import uk.sleepylux.heartlessplugin.utility.HeartManager;
+import uk.sleepylux.heartlessplugin.utility.MessageManager;
+import uk.sleepylux.heartlessplugin.utility.PlayersManager;
 
-public class getHead implements CommandExecutor {
-    HeadlessPlugin plugin;
-    public getHead(HeadlessPlugin plugin) {
+public class getHeart implements CommandExecutor {
+    HeartlessPlugin plugin;
+    public getHeart(HeartlessPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -34,7 +34,7 @@ public class getHead implements CommandExecutor {
             return true;
         }
 
-        ItemStack Skull = HeadManager.Create(plugin, p, Integer.parseInt(PJSON.get("id").toString()));
+        ItemStack Skull = HeartManager.Create(plugin, p, Integer.parseInt(PJSON.get("id").toString()));
         player.getInventory().addItem(Skull);
         MessageManager.sendMessage(player, "Gave you " + strings[0] + "'s head");
         return true;

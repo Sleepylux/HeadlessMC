@@ -1,20 +1,19 @@
-package uk.sleepylux.headlessplugin.events;
+package uk.sleepylux.heartlessplugin.events;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ItemDespawnEvent;
 import org.bukkit.inventory.ItemStack;
-import uk.sleepylux.headlessplugin.HeadlessPlugin;
+import uk.sleepylux.heartlessplugin.HeartlessPlugin;
 
-public class onHeadDestory implements Listener {
-    HeadlessPlugin plugin;
-    public onHeadDestory(HeadlessPlugin plugin) {
+public class onHeartDestory implements Listener {
+    HeartlessPlugin plugin;
+    public onHeartDestory(HeartlessPlugin plugin) {
         this.plugin = plugin;
     }
 

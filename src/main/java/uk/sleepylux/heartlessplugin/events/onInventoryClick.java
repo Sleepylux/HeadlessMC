@@ -1,4 +1,4 @@
-package uk.sleepylux.headlessplugin.events;
+package uk.sleepylux.heartlessplugin.events;
 
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -8,18 +8,18 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.json.simple.JSONObject;
-import uk.sleepylux.headlessplugin.HeadlessPlugin;
-import uk.sleepylux.headlessplugin.utility.HeadManager;
-import uk.sleepylux.headlessplugin.utility.MessageManager;
-import uk.sleepylux.headlessplugin.utility.PlayersManager;
+import uk.sleepylux.heartlessplugin.HeartlessPlugin;
+import uk.sleepylux.heartlessplugin.utility.HeartManager;
+import uk.sleepylux.heartlessplugin.utility.MessageManager;
+import uk.sleepylux.heartlessplugin.utility.PlayersManager;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static uk.sleepylux.headlessplugin.commands.revive.inv;
+import static uk.sleepylux.heartlessplugin.commands.revive.inv;
 
 public class onInventoryClick implements Listener {
-    HeadlessPlugin plugin;
-    public onInventoryClick(HeadlessPlugin plugin) {
+    HeartlessPlugin plugin;
+    public onInventoryClick(HeartlessPlugin plugin) {
         this.plugin = plugin;
     }
     @EventHandler
@@ -41,7 +41,7 @@ public class onInventoryClick implements Listener {
         JSONObject reviveeJson = PlayersManager.getPlayerJSON(plugin, revivee.getUniqueId());
 
         JSONObject playerJSON = PlayersManager.getPlayerJSON(plugin, revivee.getUniqueId());
-        ItemStack skull = HeadManager.Create(plugin, revivee, Integer.parseInt(playerJSON.get("id").toString()));
+        ItemStack skull = HeartManager.Create(plugin, revivee, Integer.parseInt(playerJSON.get("id").toString()));
         skull.setAmount(4);
 
         AtomicBoolean hasHeads = new AtomicBoolean(false);

@@ -1,8 +1,8 @@
-package uk.sleepylux.headlessplugin.utility;
+package uk.sleepylux.heartlessplugin.utility;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import uk.sleepylux.headlessplugin.HeadlessPlugin;
+import uk.sleepylux.heartlessplugin.HeartlessPlugin;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class PlayersManager {
-    public static JSONObject getJSON(HeadlessPlugin plugin) {
+    public static JSONObject getJSON(HeartlessPlugin plugin) {
         File deadplayers = new File(plugin.getDataFolder() + "/Players.json");
         try {
             Scanner playersScanner = new Scanner(deadplayers);
@@ -27,14 +27,14 @@ public class PlayersManager {
         }
     }
 
-    public static JSONObject getPlayerJSON(HeadlessPlugin plugin, UUID uuid) {
+    public static JSONObject getPlayerJSON(HeartlessPlugin plugin, UUID uuid) {
         JSONObject json = getJSON(plugin);
         JSONObject playerJson = (JSONObject) json.get(uuid.toString());
 
         return playerJson;
     }
 
-    public static boolean setJSON(HeadlessPlugin plugin, JSONObject json) {
+    public static boolean setJSON(HeartlessPlugin plugin, JSONObject json) {
         try {
             FileWriter writer = new FileWriter(plugin.getDataFolder() + "/Players.json");
             writer.write(json.toJSONString());
@@ -45,7 +45,7 @@ public class PlayersManager {
         }
     }
 
-    public static boolean setPlayerJSON(HeadlessPlugin plugin, UUID playerUUID, JSONObject playerJson) {
+    public static boolean setPlayerJSON(HeartlessPlugin plugin, UUID playerUUID, JSONObject playerJson) {
         JSONObject json = getJSON(plugin);
         json.put(playerUUID.toString(), playerJson);
         setJSON(plugin, json);
