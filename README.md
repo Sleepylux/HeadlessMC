@@ -25,7 +25,7 @@ The only way to revive a player is to have all 4 of their hearts in your invento
 ### Extra
 - Credits: me, I literally did everything :3 uwu
 - Credits Continued: Dylusion, fixed a few typos
-- Time taken: 6.03 hours ish
+- Time taken: 6.172 hours ish
 
 #### Message to NoLife members
 I have been told NoLife will use this plugin so hello all :3 I hope you all enjoy
