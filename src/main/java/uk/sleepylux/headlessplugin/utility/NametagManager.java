@@ -15,10 +15,8 @@ public class NametagManager {
     }
 
     public static void updateVisibleLifeCount(HeadlessPlugin plugin, Player player, TeamAction action) {
-        System.out.println("UVLC: 1");
         if (player == null || action == null)
             return;
-        System.out.println("UVLC: 2");
 
         Scoreboard scoreboard = player.getScoreboard();
 
@@ -27,8 +25,6 @@ public class NametagManager {
         if (team == null)
             team = scoreboard.registerNewTeam(player.getName());
 
-        System.out.println("UVLC: 3");
-
         String lifeCount = (PlayersManager.getPlayerJSON(plugin, player.getUniqueId())).get("lives").toString();
 
         team.prefix(Component.text("[").color(TextColor.fromHexString("#FF55FF"))
@@ -36,8 +32,6 @@ public class NametagManager {
                 .append(Component.text("] ").color(TextColor.fromHexString("#FF55FF")))
         );
         team.setOption(Team.Option.NAME_TAG_VISIBILITY, Team.OptionStatus.ALWAYS);
-
-        System.out.println("UVLC: 4");
 
         switch (action) {
             case CREATE -> team.addPlayer(player);
@@ -53,6 +47,5 @@ public class NametagManager {
                 team.addPlayer(player);
             }
         }
-        System.out.println("UVLC: -----------------");
     }
 }
