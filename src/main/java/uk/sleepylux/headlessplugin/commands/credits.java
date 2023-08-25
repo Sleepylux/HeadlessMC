@@ -1,6 +1,10 @@
 package uk.sleepylux.headlessplugin.commands;
 
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,8 +22,15 @@ public class credits implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (!(commandSender instanceof Player p)) return true;
 
-        MessageManager.sendMessage(p, "Github: https://github.com/Sleepylux\n" +
-                MessageManager.introMessage + ChatColor.RESET + "Issues: https://github.com/Sleepylux/HeadlessMC/issues");
+        TextComponent textComp = Component.text("My Github page: ").color(TextColor.fromHexString("#FFFFFF"))
+                .append(Component.text("SleepyLux\n").color(TextColor.fromHexString("#FF55FF")).decorate(TextDecoration.UNDERLINED)
+                        .clickEvent(ClickEvent.clickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/SleepyLux")))
+                .append(MessageManager.introMessage)
+                .append(Component.text("Found a bug? Report it: ").color(TextColor.fromHexString("#FFFFFF")))
+                .append(Component.text("here").color(TextColor.fromHexString(("#FF55FF"))).decorate(TextDecoration.UNDERLINED)
+                        .clickEvent(ClickEvent.clickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/SleepyLux/HeadlessMC/issues")));
+
+        MessageManager.sendMessage(p, textComp);
         return true;
     }
 }

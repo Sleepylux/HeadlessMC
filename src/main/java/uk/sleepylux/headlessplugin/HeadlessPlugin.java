@@ -16,7 +16,6 @@ public final class HeadlessPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        System.out.println("Loading NoLifeSMPPlugin" + this.getDataFolder() + "/Players.json");
 
         File dataFolder = new File(this.getDataFolder().toURI());
         if (!dataFolder.exists()) dataFolder.mkdir();
@@ -33,23 +32,31 @@ public final class HeadlessPlugin extends JavaPlugin {
             throw new RuntimeException(e);
         }
 
-        Objects.requireNonNull(this.getCommand("revive")).setExecutor(new revive(this));
-        Objects.requireNonNull(this.getCommand("credits")).setExecutor(new credits(this));
-        Objects.requireNonNull(this.getCommand("getHead")).setExecutor(new getHead(this));
+        Objects.requireNonNull(this.getCommand("hrevive")).setExecutor(new revive(this));
+        Objects.requireNonNull(this.getCommand("hcredits")).setExecutor(new credits(this));
+        Objects.requireNonNull(this.getCommand("hgetHead")).setExecutor(new getHead(this));
 
         getServer().getPluginManager().registerEvents(new onJoin(this), this);
+        getServer().getPluginManager().registerEvents(new onLeave(this), this);
         getServer().getPluginManager().registerEvents(new onDeath(this), this);
         getServer().getPluginManager().registerEvents(new onInventoryClick(this), this);
 
         getServer().getPluginManager().registerEvents(new onHeadDestory(this), this);
         getServer().getPluginManager().registerEvents(new onHeadPlace(this), this);
+        getServer().getPluginManager().registerEvents(new onHeadContainerEntry(this), this);
 
-        System.out.println("Loaded NoLifeSMPPlugin");
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃                                           ┃");
+        System.out.println("┃          Loaded Headless Plugin           ┃");
+        System.out.println("┃                                           ┃");
+        System.out.println("┃  https://github.com/SleepyLux/HeadlessMC  ┃");
+        System.out.println("┃                                           ┃");
+        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 
     }
 
     @Override
     public void onDisable() {
-        System.out.println("Disabled NoLifeSMPPlugin");
+        System.out.println("Disabled Headless");
     }
 }

@@ -1,5 +1,6 @@
 package uk.sleepylux.headlessplugin.commands;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -24,19 +25,19 @@ public class getHead implements CommandExecutor {
         if (!(commandSender instanceof Player player)) return true;
 
         if (strings.length == 0) {
-            MessageManager.sendMessage(player, "Please input a user to get the head of");
+            MessageManager.sendMessage(player, Component.text("Please input a user to get the head of"));
             return true;
         }
         OfflinePlayer p = plugin.getServer().getOfflinePlayer(strings[0]);
         JSONObject PJSON = PlayersManager.getPlayerJSON(plugin, p.getUniqueId());
         if (PJSON == null) {
-            MessageManager.sendMessage(player, "User \"" + strings[0] + "\" has not joined the server before");
+            MessageManager.sendMessage(player, Component.text("User \"" + strings[0] + "\" has not joined the server before"));
             return true;
         }
 
         ItemStack Skull = HeadManager.Create(plugin, p, Integer.parseInt(PJSON.get("id").toString()));
         player.getInventory().addItem(Skull);
-        MessageManager.sendMessage(player, "Gave you " + strings[0] + "'s head");
+        MessageManager.sendMessage(player, Component.text("Gave you " + strings[0] + "'s head"));
         return true;
     }
 }

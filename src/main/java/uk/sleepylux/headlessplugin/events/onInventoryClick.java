@@ -1,5 +1,8 @@
 package uk.sleepylux.headlessplugin.events;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -34,7 +37,7 @@ public class onInventoryClick implements Listener {
         Player player = (Player) e.getWhoClicked();
 
         if (revivee == null) {
-            MessageManager.sendMessage(player, " Could not find user you are trying to revive");
+            MessageManager.sendMessage(player, Component.text("Could not find user you are trying to revive"));
             return;
         }
 
@@ -52,7 +55,7 @@ public class onInventoryClick implements Listener {
             }
         });
         if (!hasHeads.get()) {
-            MessageManager.sendMessage(player, "You must have 4 of " + revivee.getName() + "'s heads to revive them");
+            MessageManager.sendMessage(player, Component.text("You must have 4 of " + revivee.getName() + "'s heads to revive them"));
             return;
         }
 
@@ -61,7 +64,8 @@ public class onInventoryClick implements Listener {
 
         inv.close();
         PlayersManager.setPlayerJSON(plugin, revivee.getUniqueId(), reviveeJson);
-        MessageManager.broadcastMessage(plugin.getServer(), ChatColor.LIGHT_PURPLE + revivee.getName() + " has been revived!");
+        MessageManager.broadcastMessage(plugin.getServer(), Component.text(revivee.getName() + " has been revived!")
+                .color(TextColor.fromCSSHexString("#FF55FF")));
         plugin.getServer().getBanList(BanList.Type.NAME).pardon(revivee.getName());
         for (Player p : plugin.getServer().getOnlinePlayers()) {
             p.playSound(p.getLocation(), Sound.BLOCK_BEACON_POWER_SELECT, 1F, 1F);

@@ -3,12 +3,12 @@ version: '${project.version}'
 main: uk.sleepylux.headlessplugin.HeadlessPlugin
 api-version: '1.20'
 commands:
-  credits:
+  hcredits:
     description: Get the plugin credits
     usage: /credits
-  revive:
+  hrevive:
     description: Revive a user
     usage: /revive
-  getHead:
+  hgetHead:
     description: Get a players head
     usage: /getHead <Playername>
