@@ -8,11 +8,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
-import org.json.simple.JSONObject;
 import uk.sleepylux.headlessplugin.HeadlessPlugin;
 import uk.sleepylux.headlessplugin.utility.HeadManager;
 import uk.sleepylux.headlessplugin.utility.MessageManager;
-import uk.sleepylux.headlessplugin.utility.PlayersManager;
 
 public class getHead implements CommandExecutor {
     HeadlessPlugin plugin;
@@ -29,13 +27,8 @@ public class getHead implements CommandExecutor {
             return true;
         }
         OfflinePlayer p = plugin.getServer().getOfflinePlayer(strings[0]);
-        JSONObject PJSON = PlayersManager.getPlayerJSON(plugin, p.getUniqueId());
-        if (PJSON == null) {
-            MessageManager.sendMessage(player, Component.text("User \"" + strings[0] + "\" has not joined the server before"));
-            return true;
-        }
 
-        ItemStack Skull = HeadManager.Create(plugin, p, Integer.parseInt(PJSON.get("id").toString()));
+        ItemStack Skull = HeadManager.Create(plugin, p);
         player.getInventory().addItem(Skull);
         MessageManager.sendMessage(player, Component.text("Gave you " + strings[0] + "'s head"));
         return true;

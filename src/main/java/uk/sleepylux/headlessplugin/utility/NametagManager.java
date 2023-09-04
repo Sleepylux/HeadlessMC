@@ -2,11 +2,11 @@ package uk.sleepylux.headlessplugin.utility;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 import uk.sleepylux.headlessplugin.HeadlessPlugin;
+import static uk.sleepylux.headlessplugin.HeadlessPlugin.PlayerManager;
 
 public class NametagManager {
 
@@ -25,7 +25,7 @@ public class NametagManager {
         if (team == null)
             team = scoreboard.registerNewTeam(player.getName());
 
-        String lifeCount = (PlayersManager.getPlayerJSON(plugin, player.getUniqueId())).get("lives").toString();
+        String lifeCount = PlayerManager.parse(PlayerManager.get(player.getUniqueId().toString())).get("lives").toString();
 
         team.prefix(Component.text("[").color(TextColor.fromHexString("#FF55FF"))
                 .append(Component.text(lifeCount).color(TextColor.fromHexString("#FFAA00")))

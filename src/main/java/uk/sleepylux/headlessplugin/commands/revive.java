@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONObject;
 import uk.sleepylux.headlessplugin.HeadlessPlugin;
 import uk.sleepylux.headlessplugin.utility.HeadManager;
-import uk.sleepylux.headlessplugin.utility.PlayersManager;
+import static uk.sleepylux.headlessplugin.HeadlessPlugin.PlayerManager;
 
 import java.util.UUID;
 
@@ -31,7 +31,7 @@ public class revive implements CommandExecutor {
 
         Inventory inv = Bukkit.createInventory(null, 36, Component.text("Revive a dead player."));
 
-        JSONObject json = PlayersManager.getJSON(plugin);
+        JSONObject json = PlayerManager.json;
 
         json.forEach((k, v) -> {
             JSONObject player;
@@ -43,9 +43,7 @@ public class revive implements CommandExecutor {
 
             if ((Boolean) player.get("dead")) {
                 OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(UUID.fromString(k.toString()));
-
-                JSONObject playerJSON = PlayersManager.getPlayerJSON(plugin, offlinePlayer.getUniqueId());
-                ItemStack skull = HeadManager.Create(plugin, offlinePlayer, Integer.parseInt(playerJSON.get("id").toString()));
+                ItemStack skull = HeadManager.Create(plugin, offlinePlayer);
                 inv.addItem(skull);
             }
         });

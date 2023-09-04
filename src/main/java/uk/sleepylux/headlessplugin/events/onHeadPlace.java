@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 import uk.sleepylux.headlessplugin.HeadlessPlugin;
 
 public class onHeadPlace implements Listener {
@@ -18,7 +19,7 @@ public class onHeadPlace implements Listener {
         ItemStack item = e.getItemInHand();
         if (item.getType() == Material.PLAYER_HEAD
                 && item.hasItemMeta()
-                && item.getItemMeta().hasCustomModelData())
+                && ((SkullMeta) item.getItemMeta()).hasOwner())
             e.setCancelled(true);
     }
 }

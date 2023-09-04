@@ -10,7 +10,9 @@ import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ItemDespawnEvent;
 import org.bukkit.inventory.ItemStack;
+import org.json.simple.JSONObject;
 import uk.sleepylux.headlessplugin.HeadlessPlugin;
+import static uk.sleepylux.headlessplugin.HeadlessPlugin.ConfigManager;
 
 public class onHeadDestory implements Listener {
     HeadlessPlugin plugin;
@@ -20,6 +22,9 @@ public class onHeadDestory implements Listener {
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
+        if (!Boolean.parseBoolean(ConfigManager.get("invulnerableHeads")))
+            return;
+
         if (e.getEntity().getType() == EntityType.DROPPED_ITEM) {
             ItemStack item = ((Item) e.getEntity()).getItemStack();
             if (item.getType() == Material.PLAYER_HEAD
@@ -32,6 +37,9 @@ public class onHeadDestory implements Listener {
 
     @EventHandler
     public void onFireDamage(EntityCombustEvent e) {
+        if (!Boolean.parseBoolean(ConfigManager.get("invulnerableHeads")))
+            return;
+
         if (e.getEntity().getType() == EntityType.DROPPED_ITEM) {
             ItemStack item = ((Item) e.getEntity()).getItemStack();
             if (item.getType() == Material.PLAYER_HEAD

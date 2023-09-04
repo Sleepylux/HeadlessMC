@@ -1,9 +1,7 @@
 package uk.sleepylux.headlessplugin.events;
 
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.TextColor;
-import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -13,12 +11,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.json.simple.JSONObject;
-import org.w3c.dom.Text;
 import uk.sleepylux.headlessplugin.HeadlessPlugin;
 import uk.sleepylux.headlessplugin.utility.HeadManager;
-import uk.sleepylux.headlessplugin.utility.MessageManager;
 import uk.sleepylux.headlessplugin.utility.NametagManager;
-import uk.sleepylux.headlessplugin.utility.PlayersManager;
+import static uk.sleepylux.headlessplugin.HeadlessPlugin.ConfigManager;
+import static uk.sleepylux.headlessplugin.HeadlessPlugin.PlayerManager;
 
 public class onDeath implements Listener {
     HeadlessPlugin plugin;
@@ -30,20 +27,20 @@ public class onDeath implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player killer = e.getPlayer().getKiller();
         if (killer == null
-             || e.getPlayer().equals(killer)) return;
+             || (e.getPlayer().equals(killer) && !Boolean.parseBoolean(ConfigManager.get("loseLifeOnSelfKill")))) return;
 
         Player player = e.getPlayer();
         OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(player.getUniqueId());
 
-        JSONObject playerJSON = PlayersManager.getPlayerJSON(plugin, player.getUniqueId());
+        JSONObject playerJSON = PlayerManager.parse(PlayerManager.get(e.getPlayer().getUniqueId().toString()));
 
-        ItemStack skull = HeadManager.Create(plugin, offlinePlayer, Integer.parseInt(playerJSON.get("id").toString()));
+        ItemStack skull = HeadManager.Create(plugin, offlinePlayer);
 
         int lifeCount = Integer.parseInt((playerJSON.get("lives").toString()))-1;
         playerJSON.put("lives", lifeCount);
         if (lifeCount == 0) playerJSON.put("dead", true);
 
-        int killerLifeCount = Integer.parseInt((PlayersManager.getPlayerJSON(plugin, killer.getUniqueId()).get("lives").toString()))-1;
+        int killerLifeCount = Integer.parseInt(PlayerManager.parse(PlayerManager.get(killer.getUniqueId().toString())).get("lives").toString());
 
         e.deathMessage(
                 Component.text("[").color(TextColor.fromHexString("#FF55FF"))
@@ -57,12 +54,12 @@ public class onDeath implements Listener {
         );
 
         player.getWorld().dropItem(player.getLocation(), skull);
-        PlayersManager.setPlayerJSON(plugin, player.getUniqueId(), playerJSON);
+        PlayerManager.set(player.getUniqueId().toString(), playerJSON);
         NametagManager.updateVisibleLifeCount(plugin, player, NametagManager.TeamAction.UPDATE);
 
         if (lifeCount == 0) {
             player.getInventory().clear();
-            player.banPlayer("You have run out of lives... goodluck");
+            player.banPlayer("You have run out of lives... Goodluck");
             player.kick();
             for (Player p : plugin.getServer().getOnlinePlayers()) {
                 p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1F, 1F);

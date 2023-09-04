@@ -10,7 +10,7 @@ import uk.sleepylux.headlessplugin.HeadlessPlugin;
 import java.util.ArrayList;
 
 public class HeadManager {
-    public static ItemStack Create(HeadlessPlugin plugin, OfflinePlayer player, Integer id) {
+    public static ItemStack Create(HeadlessPlugin plugin, OfflinePlayer player) {
 
         ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1);
         SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
@@ -19,7 +19,6 @@ public class HeadManager {
         ArrayList<Component> lore = new ArrayList<>();
         lore.add(Component.text("Collect all of " + player.getName() + "'s heads to revive them"));
         skullMeta.lore(lore);
-        skullMeta.setCustomModelData(id);
         skullMeta.setUnbreakable(true);
         skull.setItemMeta(skullMeta);
         return skull;

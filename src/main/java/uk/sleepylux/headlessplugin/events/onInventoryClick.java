@@ -1,7 +1,6 @@
 package uk.sleepylux.headlessplugin.events;
 
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -14,7 +13,7 @@ import org.json.simple.JSONObject;
 import uk.sleepylux.headlessplugin.HeadlessPlugin;
 import uk.sleepylux.headlessplugin.utility.HeadManager;
 import uk.sleepylux.headlessplugin.utility.MessageManager;
-import uk.sleepylux.headlessplugin.utility.PlayersManager;
+import static uk.sleepylux.headlessplugin.HeadlessPlugin.PlayerManager;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -41,10 +40,8 @@ public class onInventoryClick implements Listener {
             return;
         }
 
-        JSONObject reviveeJson = PlayersManager.getPlayerJSON(plugin, revivee.getUniqueId());
-
-        JSONObject playerJSON = PlayersManager.getPlayerJSON(plugin, revivee.getUniqueId());
-        ItemStack skull = HeadManager.Create(plugin, revivee, Integer.parseInt(playerJSON.get("id").toString()));
+        JSONObject reviveeJson = PlayerManager.parse(PlayerManager.get(revivee.getUniqueId().toString()));
+        ItemStack skull = HeadManager.Create(plugin, revivee);
         skull.setAmount(4);
 
         AtomicBoolean hasHeads = new AtomicBoolean(false);
@@ -55,7 +52,7 @@ public class onInventoryClick implements Listener {
             }
         });
         if (!hasHeads.get()) {
-            MessageManager.sendMessage(player, Component.text("You must have 4 of " + revivee.getName() + "'s heads to revive them"));
+            MessageManager.sendMessage(player, Component.text("You must have 4 of " + revivee.getName() + "'s heads in 1 slot to revive them"));
             return;
         }
 
@@ -63,7 +60,7 @@ public class onInventoryClick implements Listener {
         reviveeJson.put("lives", 4);
 
         inv.close();
-        PlayersManager.setPlayerJSON(plugin, revivee.getUniqueId(), reviveeJson);
+        PlayerManager.set(revivee.getUniqueId().toString(), reviveeJson);
         MessageManager.broadcastMessage(plugin.getServer(), Component.text(revivee.getName() + " has been revived!")
                 .color(TextColor.fromCSSHexString("#FF55FF")));
         plugin.getServer().getBanList(BanList.Type.NAME).pardon(revivee.getName());
